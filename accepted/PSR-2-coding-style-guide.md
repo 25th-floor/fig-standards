@@ -27,7 +27,7 @@ interpreted as described in [RFC 2119][].
 
 - Code MUST follow [PSR-1][].
 
-- Code MUST use 4 spaces for indenting, not tabs.
+- Code MUST use tabs for indenting, not spaces.
 
 - There MUST NOT be a hard limit on line length; the soft limit MUST be 120
   characters; lines SHOULD be 80 characters or less.
@@ -120,12 +120,7 @@ There MUST NOT be more than one statement per line.
 
 ### 2.4. Indenting
 
-Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
-
-> N.b.: Using only spaces, and not mixing spaces with tabs, helps to avoid
-> problems with diffs, patches, history, and annotations. The use of spaces
-> also makes it easy to insert fine-grained sub-indentation for inter-line 
-> alignment.
+Code MUST use an indent of 1 tab, and MUST NOT use spaces for indenting.
 
 ### 2.5. Keywords and True/False/Null
 
@@ -171,8 +166,8 @@ The term "class" refers to all classes, interfaces, and traits.
 
 ### 4.1. Extends and Implements
 
-The `extends` and `implements` keywords MUST be declared on the same line as
-the class name.
+The `extends` keyword MUST be declared on the same line as the class name
+while the `implements` keyword MUST be declared on a new line.
 
 The opening brace for the class MUST go on its own line; the closing brace
 for the class MUST go on the next line after the body.
@@ -185,15 +180,16 @@ use FooClass;
 use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
 
-class ClassName extends ParentClass implements \ArrayAccess, \Countable
+class ClassName extends ParentClass 
+    implements \ArrayAccess, \Countable
 {
     // constants, properties, methods
 }
 ```
 
 Lists of `implements` MAY be split across multiple lines, where each
-subsequent line is indented once. When doing so, the first item in the list
-MUST be on the next line, and there MUST be only one interface per line.
+subsequent line is indented to the level of the first declared interface. 
+Interfaces MAY be chopped down, i.e. each interface is on its own line.
 
 ```php
 <?php
@@ -203,10 +199,9 @@ use FooClass;
 use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
 
-class ClassName extends ParentClass implements
-    \ArrayAccess,
-    \Countable,
-    \Serializable
+class ClassName extends ParentClass 
+    implements \ArrayAccess, \Countable, \Serializable,
+               \Foo, \Bar, \Satanarchaeoluegenialkohoelisch
 {
     // constants, properties, methods
 }
@@ -595,6 +590,10 @@ $foo->bar(
     },
     $arg3
 );
+
+foo(function ($arg) {
+    // body
+});
 ```
 
 
