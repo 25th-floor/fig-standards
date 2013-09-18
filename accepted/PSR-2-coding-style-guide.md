@@ -596,8 +596,32 @@ foo(function ($arg) {
 });
 ```
 
+7. Language Construct
+---------------------
 
-7. Conclusion
+Language constructs like ``echo`` or ``return`` MUST be used without the optional
+parentheses, except it's a complex expression.
+
+```php
+<?php
+
+  // Okay
+  echo "FOO";
+  
+  // Not okay
+  echo("Bar");
+  
+  function foo() {
+    // Okay
+    return "Foo";
+    return (1 == true);
+    
+    // Not okay
+    return("Bar");
+```
+
+
+8. Conclusion
 --------------
 
 There are many elements of style and practice intentionally omitted by this
